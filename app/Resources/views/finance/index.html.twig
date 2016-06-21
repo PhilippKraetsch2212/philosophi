@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container theme-showcase" role="main">
+
+	<div class="page-header">
+		<h1>Finanzen</h1>
+	</div>
+	{%{% if length(accounts > 0 %}
+		{%
+	{% for account in account %}	
+	
+		<p>{{ account.getName() }}</	p>
+	{% endfor %}
+	{% else %}
+		<p>Es sind noch keine Konten eingerichtet.</p>
+	{% endif %}]
+	
+</div> <!-- /container -->
+{% endblock %}
+
+

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container theme-showcase" role="main">
+
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+      <strong>Oh oh!</strong> Dieser Login ging nicht gut... ({{ error.messageKey|trans(error.messageData, 'security') }})
+    </div>
+{% endif %}
+
+<form action="{{ path('login') }}" method="post" class="form-inline">
+    <fieldset class="form-group">
+        <label for="username" class="sr-only" >Benutzername:</label>
+        <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" placeholder="Benutzername" />
+    
+    <fieldset class="form-group">
+        <label for="password" class="sr-only" >Passwort:</label>
+        <input type="password" class="form-control" id="password" name="_password" placeholder="Passwort" />
+    </fieldset>
+    
+    <fieldset class="form-group">
+        <button type="submit" class="btn btn-primary">Einloggen</button>
+    </fieldset>
+</form>
+
+{% endblock %}
