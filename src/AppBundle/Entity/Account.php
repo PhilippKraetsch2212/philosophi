@@ -28,14 +28,14 @@ class Account
     private $idUser;
     
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(type="decimal", scale=2, options={"default" = 0})
      */
-    private $currentAmount;
+    private $currentAmount = 0;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $description;
+    private $description = null;
 
     /**
      * Get id
@@ -117,5 +117,29 @@ class Account
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param integer $idUser
+     *
+     * @return Account
+     */
+    public function setIdUser($idUser)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return integer
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }

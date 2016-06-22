@@ -6,16 +6,41 @@
 	<div class="page-header">
 		<h1>Finanzen</h1>
 	</div>
-	{%{% if length(accounts > 0 %}
-		{%
-	{% for account in account %}	
 	
-		<p>{{ account.getName() }}</	p>
-	{% endfor %}
+	{% if count_accounts > 0 %}
+		<div class="table-responsive">
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Konto</th>
+					<th style="text-align: right;">Kontostand</th>
+					<th>Beschreibung</th>
+					<th>Aktionen</th>
+				</tr>
+			</thead>
+			<tbody>
+			{% for account in accounts %}
+				<tr>
+					<td>{{ account.getName() }}</td>
+					<td style="text-align: right;">{{ account.getCurrentAmount() }} &euro;</td>
+					<td>{{ account.getDescription() }}</td>
+					<td></td>
+				</tr>
+			{% endfor %}
+			</tbody>
+			<tfoot>
+				<tr>
+					<td></td>
+					<td style="text-align: right;">{{ sum_current_amount }} &euro;</td>
+					<td></td>
+					<td><a href="/finance/add-account" class="btn btn-primary">Neues Konto anlegen</a></td>
+				</tr>
+			</tfoot>
+		</table>
+		</div>
 	{% else %}
 		<p>Es sind noch keine Konten eingerichtet.</p>
-	{% endif %}]
-	
+	{% endif %}
 </div> <!-- /container -->
 {% endblock %}
 

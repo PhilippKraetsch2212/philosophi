@@ -6,16 +6,15 @@ security:
         Symfony\Component\Security\Core\User\User:
             algorithm: bcrypt
             cost: 12
+        AppBundle\Entity\User:
+            algorithm: bcrypt
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
-                users:
-                    piggyp:
-                        password: $2y$12$SxwbMgzQ2bhgGBkMggJKOepJ7UHwNMb2nzp9bd4CGMlQimNZqAC5y
-                        roles: 'ROLE_USER'
-
+        app_db_provier:
+            entity:
+                class: AppBundle:User
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -31,6 +30,7 @@ security:
             logout:
                 path:   /logout
                 target: /
-    
+            provider: app_db_provier
+
     access_control:
         - { path: ^/finance, roles: ROLE_USER }
