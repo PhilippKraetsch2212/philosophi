@@ -5,45 +5,19 @@
 {% block body %}
 <div class="container theme-showcase" role="main">
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
-<a href="/finance/" class="btn btn-default">Abbrechen</a>
-    <form class="form-horizontal" method="POST" action="/finance/do-add-account">
+    {{ form_start(form) }}
         <fieldset>
-
-        <!-- Form Name -->
-        <legend>Neues Konto anlegen</legend>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Kontoname</label>  
-          <div class="col-md-4">
-          <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md" required="">
-            
-          </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">Beschreibung</label>  
-          <div class="col-md-4">
-          <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
-            
-          </div>
-        </div>
-
-        <!-- Button (Double) -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="save"></label>
-          <div class="col-md-8">
-            <button id="save" name="save" class="btn btn-success">Speichern</button>
-            <a href="/finance/" class="btn btn-default">Abbrechen</a>
-          </div>
-        </div>
-
+			<legend>Neues Konto anlegen</legend>
+            {{ form_widget(form) }}
+        	<div class="form-group">
+          		<label class="col-md-4 control-label" for="save"></label>
+         		 <div class="col-md-8">
+           			<button id="save" name="save" class="btn btn-success">Speichern</button>
+            		<a href="/finance/" class="btn btn-default">Abbrechen</a>
+          		</div>
+       		</div>
         </fieldset>
-    </form>
+        {{ form_end(form) }}
 
 </div> <!-- /container -->
 {% endblock %}

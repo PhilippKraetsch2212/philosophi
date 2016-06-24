@@ -53,7 +53,6 @@ class FinanceController extends Controller
 		$form = $this->createFormBuilder($account)
 			->add('name', TextType::class, array('label' => 'Name'))
 			->add('description', TextType::class, array('label' => 'Beschreibung', 'required' => false))
-			->add('save', SubmitType::class, array('label' => 'Speichern'))
 			->getForm();
 
 		$form->handleRequest($request);
@@ -78,26 +77,15 @@ class FinanceController extends Controller
 	}
 
 	/**
-	 * @Route("/finance/do-add-account", name="finance-do-add-account")
+	 * @Route("/finance/delete-account/{id}", name="finance-delete-account")
 	 */
-	public function doAddAccountAction(Request $request)
+	public function deleteAccountAction($id = null)
 	{
-		$form = $this->createForm();
-
-		$form->handleRequest($request);
-
-		if ($form->isValid()) {
-
-			$this->addFlash(
-				'notice',
-				'Your changes were saved!'
-			);
-
-			return $this->redirectToRoute('finance');
+		if ($id === null) {
+			
 		}
-
 		return $this->render(
-			'finance/new-account.html.twig',
+			'finance/delete-account.html.twig',
 			array()
 		);
 	}
