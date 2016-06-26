@@ -6,9 +6,10 @@ Fibis Disney Liste
 
 {% block stylesheets %}
     <style>
-      .j { color: green; }
-      .n { color: red; }
-      ul { list-style-type: none; }
+      .owned h3 { color: green !important; }
+      .not-owned h3 { color: red !important; }
+      .thumbnail h3 { text-align: center; }
+      .thumbnail img { height: 120px; }
     </style>
 {% endblock %}
 
@@ -37,126 +38,31 @@ Fibis Disney Liste
       <input type="button" id="suchen" value="Suchen">
       <input type="button" id="reset"  value="Zuruecksetzen">
     </div>
-    <!--<div class="col-xs-2">
-      <div class="thumbnail">
-        <img src="{{ asset('images/01.jpg') }}" alt="Dornr&ouml;schen - 2 Disc-Delux Edition">
-        <div class="caption">
-          <h3>Dornr&ouml;schen - 2 Disc-Delux Edition</h3>
+    <div class="row" style="margin-top: 20px;">
+      {% for index, film in filme %}
+      {% if film['owned'] %}
+        {% set class = 'owned' %}
+      {% else %} 
+        {% set class = 'not-owned' %}
+      {% endif %}
+      <div class="col-xs-6 {{ class }}">
+        <div class="thumbnail">
+          <img src="{{ asset(film['image']) }}" alt="{{ film['name'] }}">
+          <div class="caption">
+            <h3>{{ film['name'] }}</h3>
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    <div class="col-xs-2">
-      <div class="thumbnail">
-        <img src="{{ asset('images/02.jpg') }}" alt="Taran und der Zauberkessel">
-        <div class="caption">
-          <h4>Taran und der Zauberkessel</h4>
-        </div>
-      </div>
-    </div>-->
-    <ol>
-      <li><ul><li class="j">Dornr&ouml;schen - 2 Disc-Delux Edition</li><li><img src="{{ asset('images/01.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Taran und der Zauberkessel</li><li><img src="{{ asset('images/02.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Drei Caballeros</li><li><img src="{{ asset('images/03.jpg') }}" /></li></ul></li>
-      <li><ul><li class="n">Fantasia</li><li><img src="{{ asset('images/04.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Robin Hood</li><li><img src="{{ asset('images/05.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die tollk&uuml;hne Hexe in ihrem fliegenden Bett</li><li><img src="{{ asset('images/06.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die Hexe und der Zauberer</li><li><img src="{{ asset('images/07.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die vielen Abenteuer von Winnie Puuh</li><li><img src="{{ asset('images/08.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Das grosse Krabbeln- 2-Disc-Delux-Edition</li><li><img src="{{ asset('images/09.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Hercules</li><li><img src="{{ asset('images/10.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Bernard und Bianca - Die M&auml;usepolizei</li><li><img src="{{ asset('images/11.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Peter Pan</li><li><img src="{{ asset('images/12.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Dinosaurier</li><li><img src="{{ asset('images/13.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Basil, der grosse M&auml;usedetektiv</li><li><img src="{{ asset('images/14.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Oliver & Co</li><li><img src="{{ asset('images/15.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Cap und Capper</li><li><img src="{{ asset('images/16.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Pinocchio Special Edition</li><li><img src="{{ asset('images/17.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Alice im Wunderland (Special Edition)</li><li><img src="{{ asset('images/18.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Mary Poppins (Special Edition)</li><li><img src="{{ asset('images/19.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Ein K&ouml;nigreich f&uuml;r ein Lama</li><li><img src="{{ asset('images/20.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Fr&ouml;hlich, Frei, Spass dabei</li><li><img src="{{ asset('images/21.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Elliot, das Schmunzelmonster</li><li><img src="{{ asset('images/22.jpg') }}" /></li></ul></li>
-      <li><ul><li class="n">Toy Story 2 (Special Edition)</li><li><img src="{{ asset('images/23.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Atlantis - Das Geheimnis der verlorenen Stadt</li><li><img src="{{ asset('images/24.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Aristocats</li><li><img src="{{ asset('images/25.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Bernard und Bianca im K&auml;nguruland</li><li><img src="{{ asset('images/26.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Saludos Amigos</li><li><img src="{{ asset('images/27.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die Monster AG</li><li><img src="{{ asset('images/28.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Toy Story (Special Edition)</li><li><img src="{{ asset('images/29.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Dumbo</li><li><img src="{{ asset('images/30.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Musik, Tanz und Rhythmus</li><li><img src="{{ asset('images/31.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Der Gl&ouml;ckner von Notre Dame</li><li><img src="{{ asset('images/32.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Der Gl&ouml;ckner von Notre Dame 2</li><li><img src="{{ asset('images/33.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die Abenteuer von Ichabod und Tadd&auml;us Kr&ouml;te</li><li><img src="{{ asset('images/34.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Lilo & Stitch</li><li><img src="{{ asset('images/35.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Mulan Special Edition</li><li><img src="{{ asset('images/36.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Der Schatzplanet</li><li><img src="{{ asset('images/37.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Findet Nemo 2-Disc-Edition</li><li><img src="{{ asset('images/38.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Pocahontas</li><li><img src="{{ asset('images/39.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Pocahontas 2: Reise in eine neue Welt</li><li><img src="{{ asset('images/40.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die K&uuml;he sind los</li><li><img src="{{ asset('images/41.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Mulan 2</li><li><img src="{{ asset('images/42.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">B&auml;renbr&uuml;der</li><li><img src="{{ asset('images/43.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die Unglaublichen - The Incredibles 2-Disc-Edition</li><li><img src="{{ asset('images/44.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Tarzan (2-Disc-Edition)</li><li><img src="{{ asset('images/45.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Lilo & Stitch 2 - Stitch v&ouml;llig abgedreht</li><li><img src="{{ asset('images/46.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Tarzan 2</li><li><img src="{{ asset('images/47.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Ein K&ouml;nigreich f&uuml;r ein Lama 2 - Kronks grosses Abenteuer</li><li><img src="{{ asset('images/48.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die drei Musketiere</li><li><img src="{{ asset('images/49.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Himmel und Huhn</li><li><img src="{{ asset('images/50.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Tierisch Wild</li><li><img src="{{ asset('images/51.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">B&auml;renbr&uuml;der 2</li><li><img src="{{ asset('images/52.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Cap und Capper 2</li><li><img src="{{ asset('images/53.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Cars</li><li><img src="{{ asset('images/54.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Aristocats Sammler Edition</li><li><img src="{{ asset('images/55.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Triff die Robinsons</li><li><img src="{{ asset('images/56.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die Hexe und der Zauberer 45. Jubil&auml;umsedition</li><li><img src="{{ asset('images/57.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Ratatouille</li><li><img src="{{ asset('images/58.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Oliver & Co 20. Jubil&auml;umsedition</li><li><img src="{{ asset('images/59.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Mary Poppins 45. Jubil&auml;umsedition</li><li><img src="{{ asset('images/60.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Die tollk&uuml;hne Hexe in ihrem fliegenden Bett Special Edition</li><li><img src="{{ asset('images/61.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Elliot, das Schmunzelmonster Special Edition</li><li><img src="{{ asset('images/62.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">WALL-E - Der Letzte r&auml;umt die Erde auf</li><li><img src="{{ asset('images/63.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Basil, der grosse M&auml;usedetektiv Special Edition</li><li><img src="{{ asset('images/64.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Bolt - Ein Hund f&uuml;r alle F&auml;lle</li><li><img src="{{ asset('images/65.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Taran und der Zauberkessel 25. Jubil&auml;umsedition</li><li><img src="{{ asset('images/66.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Dumbo 70. Jubil&auml;umsedition</li><li><img src="{{ asset('images/67.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Alice im Wunderland 60. Jubil&auml;umsedition</li><li><img src="{{ asset('images/68.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Oben</li><li><img src="{{ asset('images/69.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">K&uuml;ss den Frosch</li><li><img src="{{ asset('images/70.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Rapunzel - Neu verf&ouml;hnt</li><li><img src="{{ asset('images/71.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Toy Story 3</li><li><img src="{{ asset('images/72.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Atlantis - Die R&uuml;ckkehr</li><li><img src="{{ asset('images/73.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Pinocchio</li><li><img src="{{ asset('images/74.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Fantasia</li><li><img src="{{ asset('images/75.jpg') }}" /></li></ul></li>
-      <li><ul><li class="n">Fantasia 2000</li><li><img width="189" height="267" src="{{ asset('images/76.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">101 Dalmatiner</li><li><img src="{{ asset('images/77.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">101 Dalmatiner Teil 2 - Auf kleinen Pfoten zum…</li><li><img src="{{ asset('images/78.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Cars 2</li><li><img src="{{ asset('images/79.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Peter Pan</li><li><img src="{{ asset('images/80.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Peter Pan 2: Neue Abenteuer in Nimmerland</li><li><img src="{{ asset('images/81.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Aladdin</li><li><img src="{{ asset('images/82.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Dschafars R&uuml;ckkehr</li><li><img src="{{ asset('images/83.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Aladdin und der K&ouml;nig der Diebe</li><li><img src="{{ asset('images/84.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Toy Story (Special Edition)</li><li><img src="{{ asset('images/85.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Toy Story 2 (Special Edition)</li><li><img src="{{ asset('images/86.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Cinderella</li><li><img src="{{ asset('images/87.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Cinderella 2 - Tr&auml;ume werden wahr</li><li><img src="{{ asset('images/88.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Cinderella 3 - Wahre Liebe siegt</li><li><img src="{{ asset('images/89.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Susi und Strolch</li><li><img src="{{ asset('images/90.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Susi und Strolch 2: Kleine Strolche - Grosses Abenteuer!</li><li><img src="{{ asset('images/91.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Ralph reichts</li><li><img src="{{ asset('images/92.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Findet Nemo</li><li><img src="{{ asset('images/93.jpg') }}" /></li></ul></li>
-      <li><ul><li class="j">Merida - Legende der Highlands</li><li><img src="{{ asset('images/94.jpg') }}" /></li></ul></li>
-    </ol>
-    </div>
+  </div>
 {% endblock %}
 
 {% block javascripts %}
 <script type="text/javascript">
 <!--
 $("#nur_fehlende").click(function(){
-  $("li.j").parent().parent().hide();
+  $(".owned").hide();
   $("#alle").prop("checked", false);
   $("#nur_fehlende").hide();
   $("#l_nur_fehlende").hide();
@@ -167,7 +73,7 @@ $("#nur_fehlende").click(function(){
   }
 });
 $("#alle").click(function(){
-  $("li.j").parent().parent().show();
+  $(".owned").show();
   $("#nur_fehlende").prop("checked", false);
   $("#nur_fehlende").show();
   $("#l_nur_fehlende").show();
@@ -181,16 +87,16 @@ $("#alle").hide();
 $("#l_alle").hide();
 $("#suchen").click(function(){
   if ($("#suche").val()) {
-    $("ol>li").hide();
-    $("ol>li>ul").find(":contains('"+$("#suche").val()+"')").parent().parent().show();
+    $(".thumbnail").parent().hide();
+    $("h3:contains('"+$("#suche").val()+"')").parents('.thumbnail').parent().show();
     if (!$("#nur_fehlende").is(":visible")) {
-      $("li.j").parent().parent().hide();
+      $(".owned").hide();
     }
   } else {
-    $("li.j").parent().parent().show();
-    $("li.n").parent().parent().show();
+    $(".owned").show();
+    $(".not-owned").show();
     if (!$("#nur_fehlende").is(":visible")) {
-      $("li.j").parent().parent().hide();
+      $(".owned").hide();
       $("#alle").prop("checked", false);
       $("#nur_fehlende").hide();
       $("#l_nur_fehlende").hide();
