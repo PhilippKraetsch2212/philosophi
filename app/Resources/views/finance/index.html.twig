@@ -23,7 +23,11 @@
 					<td>{{ account.getName() }}</td>
 					<td style="text-align: right;">{{ account.getCurrentAmount() }} &euro;</td>
 					<td>{{ account.getDescription() }}</td>
-					<td></td>
+					<td>
+						<a href="/finance/delete-account/{{ account.getId() }}" class="btn btn-danger">Löschen</a>
+						<a href="/finance/edit-account/{{ account.getId() }}" class="btn btn-warning">Bearbeiten</a>
+						<a href="/finance/show-account-details/{{ account.getId() }}" class="btn btn-info">Details</a>
+					</td>
 				</tr>
 			{% endfor %}
 			</tbody>
@@ -39,6 +43,7 @@
 		</div>
 	{% else %}
 		<p>Es sind noch keine Konten eingerichtet.</p>
+		<a href="/finance/add-account" class="btn btn-primary">Neues Konto anlegen</a>
 	{% endif %}
 </div> <!-- /container -->
 {% endblock %}

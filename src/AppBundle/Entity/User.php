@@ -4,9 +4,10 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @ORM\Table(name="app_users")
+ * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="AppBundle\Entity\UserRepository")
  */
 class User implements UserInterface, \Serializable
@@ -17,6 +18,11 @@ class User implements UserInterface, \Serializable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Account", mappedBy="user")
+     */
+    private $accounts;
 
     /**
      * @ORM\Column(type="string", length=25, unique=true)
@@ -43,6 +49,7 @@ class User implements UserInterface, \Serializable
         $this->isActive = true;
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
+        $this->accounts = new ArrayCollection();
     }
 
     public function getUsername()
@@ -179,5 +186,39 @@ class User implements UserInterface, \Serializable
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add account
+     *
+     * @param \AppBundle\Entity\Account $account
+     *
+     * @return User
+     */
+    public function addAccount(\AppBundle\Entity\Account $account)
+    {
+        $this->accounts[] = $account;
+
+        return $this;
+    }
+
+    /**
+     * Remove account
+     *
+     * @param \AppBundle\Entity\Account $account
+     */
+    public function removeAccount(\AppBundle\Entity\Account $account)
+    {
+        $this->accounts->removeElement($account);
+    }
+
+    /**
+     * Get accounts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAccounts()
+    {
+        return $this->accounts;
     }
 }

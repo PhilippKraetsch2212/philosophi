@@ -57,6 +57,38 @@
       </div>
     </nav>
 
+    <div class="container">
+      {% if app.session.flashBag.has('success') %}
+          <div class="alert alert-success">
+              {% for msg in app.session.flashBag.get('success') %}
+                  {{ msg }}
+              {% endfor %}
+          </div>
+      {% endif %}
+      {% if app.session.flashBag.has('danger') %}
+          <div class="alert alert-danger">
+              {% for msg in app.session.flashBag.get('danger') %}
+                  {{ msg }}
+              {% endfor %}
+          </div>
+      {% endif %}
+      {% if app.session.flashBag.has('warning') %}
+          <div class="alert alert-warning">
+              {% for msg in app.session.flashBag.get('warning') %}
+                  {{ msg }}
+              {% endfor %}
+          </div>
+      {% endif %}
+      {% if app.session.flashBag.has('notice') %}
+          <div class="alert alert-notice">
+              {% for msg in app.session.flashBag.get('notice') %}
+                  {{ msg }}
+              {% endfor %}
+          </div>
+      {% endif %}
+
+    </div>
+    
     {% block body %}{% endblock %}
 
     <script src="{{ asset('js/jquery-2.2.4.min.js') }}"></script>
