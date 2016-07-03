@@ -3,49 +3,47 @@
 {% block body %}
 <div class="container theme-showcase" role="main">
 
-	<div class="page-header">
-		<h1>Finanzen</h1>
-	</div>
-	{% if count_accounts > 0 %}
-		<div class="table-responsive">
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>Konto</th>
-					<th style="text-align: right;">Kontostand</th>
-					<th>Beschreibung</th>
-					<th>Aktionen</th>
-				</tr>
-			</thead>
-			<tbody>
-			{% for account in accounts %}
-				<tr>
-					<td>{{ account.getName() }}</td>
-					<td style="text-align: right;">{{ account.getCurrentAmount() }} &euro;</td>
-					<td>{{ account.getDescription() }}</td>
-					<td>
-						<a href="/finance/delete-account/{{ account.getId() }}" class="btn btn-danger">Löschen</a>
-						<a href="/finance/edit-account/{{ account.getId() }}" class="btn btn-warning">Bearbeiten</a>
-						<a href="/finance/show-account-details/{{ account.getId() }}" class="btn btn-info">Details</a>
-					</td>
-				</tr>
-			{% endfor %}
-			</tbody>
-			<tfoot>
-				<tr>
-					<td></td>
-					<td style="text-align: right;">{{ sum_current_amount }} &euro;</td>
-					<td></td>
-					<td><a href="/finance/add-account" class="btn btn-primary">Neues Konto anlegen</a></td>
-				</tr>
-			</tfoot>
-		</table>
-		</div>
-	{% else %}
-		<p>Es sind noch keine Konten eingerichtet.</p>
-		<a href="/finance/add-account" class="btn btn-primary">Neues Konto anlegen</a>
-	{% endif %}
+    <div class="page-header">
+        <h1>Finanzen</h1>
+    </div>
+    {% if count_accounts > 0 %}
+        <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Konto</th>
+                    <th style="text-align: right;">Kontostand</th>
+                    <th>Beschreibung</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for account in accounts %}
+                <tr>
+                    <td>{{ account.getName() }}</td>
+                    <td style="text-align: right;">{{ account.getCurrentAmount() }} &euro;</td>
+                    <td>{{ account.getDescription() }}</td>
+                    <td>
+                        <a href="/finance/delete-account/{{ account.getId() }}" class="btn btn-danger">Löschen</a>
+                        <a href="/finance/edit-account/{{ account.getId() }}" class="btn btn-warning">Bearbeiten</a>
+                        <a href="/finance/show-account-details/{{ account.getId() }}" class="btn btn-info">Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td style="text-align: right;">{{ sum_current_amount }} &euro;</td>
+                    <td></td>
+                    <td><a href="/finance/add-account" class="btn btn-primary">Neues Konto anlegen</a></td>
+                </tr>
+            </tfoot>
+        </table>
+        </div>
+    {% else %}
+        <p>Es sind noch keine Konten eingerichtet.</p>
+        <a href="/finance/add-account" class="btn btn-primary">Neues Konto anlegen</a>
+    {% endif %}
 </div> <!-- /container -->
 {% endblock %}
-
-

@@ -16,46 +16,43 @@ Fibis Disney Liste
 {% block body %}
 <div class="container theme-showcase" role="main">
 
-	<div class="page-header">
-		<h1>Fibis Disney Filme:</h1>
-	</div>
+    <div class="page-header">
+        <h1>Fibis Disney Filme:</h1>
+    </div>
 
     <div>
-      <label for="nur_fehlende" id="l_nur_fehlende">
-        <input type="checkbox" id="nur_fehlende">
-        nur fehlende anzeigen
-      </label> 
-      <label for="alle" id="l_alle">
-        <input type="checkbox" id="alle">
-        alle anzeigen
-      </label> 
+        <label for="nur_fehlende" id="l_nur_fehlende">
+            <input type="checkbox" id="nur_fehlende">nur fehlende anzeigen
+        </label>
+        <label for="alle" id="l_alle">
+            <input type="checkbox" id="alle">alle anzeigen
+        </label>
     </div>
     <div>
-      <label for="nur_fehlende" id="l_nur_fehlende">
-        Suchen:
-        <input type="text" id="suche">
-      </label>
-      <input type="button" id="suchen" value="Suchen">
-      <input type="button" id="reset"  value="Zuruecksetzen">
+        <label for="nur_fehlende" id="l_nur_fehlende">Suchen:
+            <input type="text" id="suche">
+        </label>
+        <input type="button" id="suchen" value="Suchen">
+        <input type="button" id="reset"  value="Zuruecksetzen">
     </div>
     <div class="row" style="margin-top: 20px;">
-      {% for index, film in filme %}
-      {% if film['owned'] %}
-        {% set class = 'owned' %}
-      {% else %} 
-        {% set class = 'not-owned' %}
-      {% endif %}
-      <div class="col-xs-6 {{ class }}">
-        <div class="thumbnail">
-          <img src="{{ asset(film['image']) }}" alt="{{ film['name'] }}">
-          <div class="caption">
-            <h3>{{ film['name'] }}</h3>
-          </div>
+    {% for index, film in filme %}
+        {% if film['owned'] %}
+            {% set class = 'owned' %}
+        {% else %}
+            {% set class = 'not-owned' %}
+        {% endif %}
+        <div class="col-xs-6 {{ class }}">
+            <div class="thumbnail">
+                <img src="{{ asset(film['image']) }}" alt="{{ film['name'] }}">
+                <div class="caption">
+                    <h3>{{ film['name'] }}</h3>
+                </div>
+            </div>
         </div>
-      </div>
-      {% endfor %}
+    {% endfor %}
     </div>
-  </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
@@ -120,5 +117,5 @@ $("#reset").click(function(){
   }
 });
 -->
-    </script>
+</script>
 {% endblock %}
