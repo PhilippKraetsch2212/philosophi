@@ -12,11 +12,11 @@ class PlaygroundController extends Controller
      */
     public function numberAction($count = 6)
     {
-    	$numbersList = '';
-    	$availableNumbers = array();
-    	for ($i = 1; $i <= 49; $i++) {
-    		$availableNumbers[] = $i;
-    	}
+        $numbersList = '';
+        $availableNumbers = array();
+        for ($i = 1; $i <= 49; $i++) {
+            $availableNumbers[] = $i;
+        }
         $numbers = array();
         while (count($numbers) < $count) {
             $choosenNumber = rand(1, 49);
@@ -32,7 +32,7 @@ class PlaygroundController extends Controller
             array('luckyNumberList' => $numbersList)
         );
     }
-    
+
     /**
      * @Route("/disney/")
      */

@@ -6,16 +6,16 @@
 <div class="container theme-showcase" role="main">
   {{ form_start(form) }}
     <fieldset>
-			<legend>Neues Konto anlegen</legend>
-      {{ form_widget(form) }}
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="save"></label>
-       	<div class="col-md-8">
-         	<button id="save" name="save" class="btn btn-success">Speichern</button>
-          <a href="/finance/" class="btn btn-default">Abbrechen</a>
+        <legend>Neues Konto anlegen</legend>
+        {{ form_widget(form)
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="save"></label>
+            <div class="col-md-8">
+                <button id="save" name="save" class="btn btn-success">Speichern</button>
+                <a href="/finance/" class="btn btn-default">Abbrechen</a>
+            </div>
         </div>
-     	</div>
     </fieldset>
-  {{ form_end(form) }}
+    {{ form_end(form) }}
 </div> <!-- /container -->
 {% endblock %}
